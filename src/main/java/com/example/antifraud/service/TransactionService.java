@@ -29,9 +29,9 @@ public class TransactionService {
         Set<String> ipSet = new HashSet<>();
         Set<Region> regionSet = new HashSet<>();
         repository.save(transaction);
-        var transactions =
+        var transactionList =
                 repository.getTransactions(transaction.getNumber(), transaction.getDate().minusHours(1), transaction.getDate());
-        var transactionList = transactions.get();
+
         for (Transaction t : transactionList) {
             ipSet.add(t.getIp());
             regionSet.add(t.getRegion());

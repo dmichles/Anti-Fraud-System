@@ -7,12 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
+
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction,Long> {
     @Query("SELECT t from Transaction t WHERE t.number = :number AND t.date BETWEEN :before AND :after ORDER BY t.id")
-    Optional<List<Transaction>> getTransactions(String number, LocalDateTime before, LocalDateTime after);
+    List<Transaction> getTransactions(String number, LocalDateTime before, LocalDateTime after);
 
     @Query("SELECT t from Transaction t")
     List<Transaction> getTransactionsAll();
